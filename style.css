@@ -1,0 +1,288 @@
+    <style>
+        /*
+ * Optimized CSS for smooth slot machine performance
+ * Removed heavy background animations and effects
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --item-height: 100px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #7b1fa2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/*
+ * Game info panel
+ */
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+.bet-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bet-controls label {
+    color: white;
+}
+
+.bet-controls input {
+    width: 80px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.balance {
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+/*
+ * Buttons
+ */
+.start-button {
+    display: block;
+    margin: 1em auto;
+    padding: 15px 40px;
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.start-button:hover:not(:disabled) {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:disabled {
+    background: #7f8c8d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reel-controls {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.reel-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.reel-button {
+    padding: 10px 15px;
+    min-width: 80px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.reel-button:hover:not(:disabled) {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.reel-button:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/*
+ * Payline indicator - simplified
+ */
+.payline {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255,0,0,0) 0%,
+        rgba(255,0,0,0.8) 20%,
+        rgba(255,0,0,0.8) 80%,
+        rgba(255,0,0,0) 100%
+    );
+    transform: translateY(-1px);
+    z-index: 15;
+}
+
+/*
+ * Win message - simplified
+ */
+.win-message {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(45deg, #f1c40f, #f39c12);
+    color: #2c3e50;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: none;
+    max-width: 90vw;
+    text-align: center;
+}
+/*
+ * Main container - simplified
+ */
+#container {
+    background-color: rgba(4, 9, 15, 0.95);
+    padding: 50px;
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+/*
+ * Window styling - optimized
+ */
+.window {
+    position: relative;
+    overflow: hidden;
+    height: calc(3 * var(--item-height));
+}
+
+.window::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+    z-index: 10;
+}
+
+.window::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+    z-index: 10;
+}
+
+.window-border {
+    padding: 5px;
+    background: linear-gradient(to bottom, #fcf8ad, #f8f3cd, #f9e13d);
+    box-shadow: 0 6px 4px -5px #eca654 inset;
+    position: relative;
+    z-index: 1;
+}
+
+.window-border-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/*
+ * Reels and icon styling - performance optimized
+ */
+.icon {
+    width: 80px;
+    height: var(--item-height);
+    display: block;
+    position: relative;
+}
+
+.outer-col {
+    overflow-y: hidden;
+    width: 100px;
+    float: left;
+    background: linear-gradient(to bottom, #16013c, #741a5e, #430155, #16013c);
+    height: calc(var(--item-height) * 3);
+}
+
+.outer-spacer {
+    width: 8px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid rgba(247, 206, 108, 0.15);
+    background-color: #893802;
+}
+
+.col {
+    padding: 0 10px;
+    will-change: transform;
+    transform: translateY(calc(-100% + var(--item-height) * 3));
+    /* Optimized for hardware acceleration */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
+
+.col img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    position: relative;
+    z-index: 3;
+    /* Optimize images for animation */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Simplified shadow effect - much lighter on performance */
+.col .icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    border-radius: 50%;
+}
+    </style>
