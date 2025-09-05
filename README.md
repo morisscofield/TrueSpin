@@ -1,6 +1,6 @@
 # TrueSpin Slot Machine
 
-A browser-based slot machine game with skill-based mechanics. Unlike traditional RNG-based slots, TrueSpin uses physics simulation for reel spinning—reels start fast, slow down naturally with deceleration, and stop based on player timing. This adds a "true spin" element where your stop timing can influence outcomes.
+A browser-based slot machine game with skill-based mechanics. Unlike traditional RNG-based slots, TrueSpin uses physics simulation for reel spinning. Reels start fast, slow down naturally with deceleration, and stop based on player timing. This adds a "true spin" element where your stop timing can influence outcomes.
 
 ## Features
 - 3 reels with classic symbols (cherry, orange, banana, watermelon, triple bar, lucky seven).
