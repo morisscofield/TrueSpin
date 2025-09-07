@@ -23,7 +23,7 @@ A browser-based slot machine game with skill-based mechanics. Unlike traditional
 - Wins are calculated on the middle payline; balance updates automatically.
 4. **Images**: The "items" folder must contain PNG images for each symbol (e.g., cherry.png, orange.png). Ensure they're ~80x100px for best fit.
 5. **Alternative Files**: 
-- There’s also an `index2.html` file with all scripts and styles embedded. Use this if you prefer a single-file version—no need for `script.js` or `style.css`.
+- There’s also an `index2.html` file with all scripts and styles embedded. Use this if you prefer a single-file version, no need for `script.js` or `style.css`.
 - Additionally, `index3.html` includes embedded sound effects for a more immersive experience.
 
 ## Technical Notes
